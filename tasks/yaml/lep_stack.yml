@@ -1,0 +1,12 @@
+---
+:title: LepStack
+:hosts:
+  1.1.1.1:
+    user: ubuntu
+    key: "/root/test-key.pem"
+  2.2.2.2:
+    user: ubuntu
+    password: "-"
+:commands:
+  - apt update && apt -y install nginx php-fpm
+  -  

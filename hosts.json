@@ -1,0 +1,9 @@
+{
+	"password": "-",
+	"myhost1": {
+		"user": "ubuntu"
+	},
+	"myhost2": {
+		"user": "ubuntu"
+	}
+}
