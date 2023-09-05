@@ -51,6 +51,7 @@ optparse = OptionParser.new do |opts|
   opts.separator "    #{$PROGRAM_NAME} -r path/to/task.rb"
   opts.separator "    #{$PROGRAM_NAME} -y path/to/task.yml"
   opts.separator "    #{$PROGRAM_NAME} -s -e 'whoami' -H hosts.json"
+  opts.separator "    #{$PROGRAM_NAME} -s -d -r path/to/task.rb"
 end
 
 # Parse arguments
