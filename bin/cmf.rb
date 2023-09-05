@@ -12,6 +12,7 @@ def bail(msg, optparse, code = 9)
 end
 
 options = { sudo: false,
+            dryrun: false,
             hosts: {},
             verbose: false}
 help = false
@@ -20,6 +21,7 @@ optparse = OptionParser.new do |opts|
   opts.separator ''
   opts.separator '  Options:'
   opts.on('-v', '--verbose', 'Verbose logging to /tmp/cmf-PID.log') { options[:verbose] = true }
+  opts.on('-d', '--dryrun', 'Run in dryrun mode', FalseClass) { |_| options[:dryrun] = true }
   opts.on('-t',
           '--threaded [THREADS]',
           'Run concurrently in THREADS amount of threads instead of serial (Default: unlimited)',
@@ -69,9 +71,9 @@ unless options[:rb_task] || options[:yml_task] || options[:cmd]
   bail('Ruby task, yaml task or a command must be provided', optparse)
 end
 
-if options[:yml_task]
-  bail('YAML tasks are not yet supported!', optparse)
-end
+#if options[:yml_task]
+#  bail('YAML tasks are not yet supported!', optparse)
+#end
 
 cmf = Configuration::Management::Framework::Cmf.execute_display(**options)
 

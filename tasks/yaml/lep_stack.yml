@@ -8,5 +8,51 @@
     user: ubuntu
     password: "-"
 :commands:
-  - apt update && apt -y install nginx php-fpm
-  -  
+  - apt -qq update
+  - apt -y -qq install nginx php-fpm
+  - mkdir -p /etc/nginx/sites-enabled
+  - chmod  755 /etc/nginx/sites-enabled
+  - touch /etc/nginx/sites-enabled/default
+  - chmod  644 /etc/nginx/sites-enabled/default
+  - mkdir -p /var/www/html/default/public_html
+  - chmod  755 /var/www/html/default/public_html
+  - touch /var/www/html/default/public_html/index.php
+  - chmod  644 /var/www/html/default/public_html/index.php
+  - chown  www-data:www-data /var/www/html/default/public_html/index.php
+  - chown -R www-data:www-data /var/www/html/*
+  - systemctl restart nginx
+  - systemctl restart php7.2-fpm
+  - systemctl enable --now nginx
+  - systemctl enable --now php7.2-fpm
+:files:
+  update:
+    - file: /etc/nginx/sites-enabled/default
+      content: |+
+          server {
+              listen 80 default_server;
+              listen [::]:80 default_server;
+
+              server_name _;
+              root /var/www/html/default/public_html;
+              index index.php index.html;
+
+              location / {
+                  try_files $uri $uri/ =404;
+              }
+
+              location ~ \\.php$ {
+                  fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+                  include snippets/fastcgi-php.conf;
+              }
+
+              location ~ /\\.ht {
+                  deny all;
+              }
+          }
+    - file: /var/www/html/default/public_html/index.php
+      content: |+
+          <?php
+              header("Content-Type: text/plain");
+              echo "Hello, world!\\n";
+          ?>
+
