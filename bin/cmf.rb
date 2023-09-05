@@ -36,7 +36,7 @@ optparse = OptionParser.new do |opts|
           String) { |h| options[:hosts] = JSON.parse(File.read(h))}
   opts.on('-s',
           '--sudo',
-          'Provide Sudo password',
+          'Execute tasks with sudo access',
           FalseClass) { |_| options[:sudo] = true }
   opts.on('-r',
           '--ruby TASK_RUBY_FILE',
