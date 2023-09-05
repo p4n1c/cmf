@@ -3,7 +3,7 @@
 CMF is an project assignment :)
 It's a framework that allows running certain code defined tasks, and or yaml defined tasks.
 Tasks can be defined as ruby class with a few helper methods provided to support basic tasks that could be needed to setup a server.
-It's highly extensible that it allows the user to extend the functionality even within the defined tasks itself.
+It's highly extensible that it allows the user to extend the functionality even within the defined tasks themselves.
 
 ## Usage Requirements
 In order to create a new task in ruby, you must adhere the following requirement in your task:
@@ -43,7 +43,7 @@ While creating a new task in yaml has the following requirements:
     - ```dst``` is the remote path to the file to upload to.
 
 ## Setup
-- Unpack the zip file and cd to the project directory.
+- Clone the repository to your local machine and cd to the project directory.
 - Install bundler by running ```gem install bundler``` (install ruby and gem using your package manager if you don't have them installed).
 - Within the project directory run ```bundle install``` in order to install the dependencies
 - Run ./bin/cmf.rb! Happy CMF'ing!
