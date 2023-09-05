@@ -71,10 +71,6 @@ unless options[:rb_task] || options[:yml_task] || options[:cmd]
   bail('Ruby task, yaml task or a command must be provided', optparse)
 end
 
-#if options[:yml_task]
-#  bail('YAML tasks are not yet supported!', optparse)
-#end
-
 cmf = Configuration::Management::Framework::Cmf.execute_display(**options)
 
 warn "Success on #{cmf.successes}"

@@ -120,7 +120,6 @@ module Configuration
           host_regex = Regexp.union(Resolv::IPv4::Regex, Resolv::IPv6::Regex, /^[a-zA-Z0-9][a-zA-Z0-9\-\.]{0,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+$/)
           raise InvalidHostDefinitionError.new('Invalid hostname or IP address provided') unless host =~ host_regex
           unless opts[:password].nil? || opts[:password].eql?('-')
-            p opts
             raise InvalidHostDefinitionError.new('Password field can only be set to -') unless opts[:password].nil? && opts[:password].eql?('-')
           end
         end
