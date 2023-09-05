@@ -58,7 +58,7 @@ Usage: ./bin/cmf.rb <options>
     -t, --threaded [THREADS]         Run concurrently in THREADS amount of threads instead of serial (Default: unlimited)
     -e, --exec COMMAND               Remote command to execute on the servers
     -H, --host HOSTS_FILE            Path to json file where hosts, users and auth method are defined
-    -s, --sudo                       Provide Sudo password
+    -s, --sudo                       Execute tasks with sudo access 
     -r, --ruby TASK_RUBY_FILE        Path to ruby task file to execute
     -y, --yaml TASK_YAML_FILE        Path to yaml task file to execute
     -h, --help                       This help
